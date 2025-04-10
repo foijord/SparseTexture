@@ -31,20 +31,39 @@ int main(int, const char* [])
 		auto graphicsQueue = std::make_shared<VulkanQueue>(device, graphicsQueueFamilyIndex, graphicsQueueIndex);
 		auto fence = std::make_shared<VulkanFence>(device);
 
-		VkExtent3D imageExtent{ .width = 16384, .height = 16384, .depth = 2048 };
+		VulkanImage::Config imageConfig{
+			.flags = VK_IMAGE_CREATE_SPARSE_BINDING_BIT | VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT,
+			.imageType = VK_IMAGE_TYPE_3D,
+			.format = VK_FORMAT_R8_SNORM,
+			.usage = VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT,
+			.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED,
+		};
+
+		auto imageFormatProperties = physicalDevice->getPhysicalDeviceImageFormatProperties(
+			imageConfig.format,
+			imageConfig.imageType,
+			imageConfig.tiling,
+			imageConfig.usage,
+			imageConfig.flags);
+
+		auto imageExtent = imageFormatProperties.maxExtent;
+
+		std::cout << std::format(
+			"imageFormat maxExtent: width: {}, height: {}, depth: {}",
+			imageFormatProperties.maxExtent.width,
+			imageFormatProperties.maxExtent.height,
+			imageFormatProperties.maxExtent.depth) << std::endl;
+
+		//imageExtent.width = std::max(imageExtent.width, 8192u);
+		//imageExtent.height = std::max(imageExtent.height, 8192u);
+		//imageExtent.depth = std::max(imageExtent.depth, 8192u);
+
 		auto maxExtent = std::max(imageExtent.width, std::max(imageExtent.height, imageExtent.depth));
 		auto numLevels = std::floor(std::log2(maxExtent)) + 1;
+		imageConfig.extent = imageExtent;
+		imageConfig.mipLevels = static_cast<uint32_t>(numLevels);
 
-		auto image = std::make_shared<VulkanImage>(device,
-			VulkanImage::Config{
-				.flags = VK_IMAGE_CREATE_SPARSE_BINDING_BIT | VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT,
-				.imageType = VK_IMAGE_TYPE_3D,
-				.format = VK_FORMAT_R8_SNORM,
-				.extent = imageExtent,
-				.mipLevels = static_cast<uint32_t>(numLevels),
-				.usage = VK_IMAGE_USAGE_TRANSFER_DST_BIT | VK_IMAGE_USAGE_SAMPLED_BIT,
-				.initialLayout = VK_IMAGE_LAYOUT_UNDEFINED,
-			});
+		auto image = std::make_shared<VulkanImage>(device, imageConfig);
 
 		auto memoryRequirements = device->getMemoryRequirements(image->image);
 		memoryRequirements.size = size_t(1) << 30; // 1 GiB
@@ -95,8 +114,8 @@ int main(int, const char* [])
 
 				{
 					Timer timer;
-					graphicsQueue->bindSparse(sparseImageMemoryBindInfo, fence->fence);
-					fence->waitAndReset();
+					graphicsQueue->bindSparse(sparseImageMemoryBindInfo/*, fence->fence*/);
+					//fence->waitAndReset();
 					bindTimes.push_back(timer.getElapsedTimeSeconds());
 				}
 
