@@ -71,6 +71,11 @@ public:
 		return this->physicalDeviceProperties.deviceID;
 	}
 
+	VkDeviceSize getSparseAddressSpaceSize() const
+	{
+		return this->physicalDeviceProperties.limits.sparseAddressSpaceSize;
+	}
+
 	std::string driverVersion() const
 	{
 		auto code = this->physicalDeviceProperties.driverVersion;
@@ -86,6 +91,18 @@ public:
 #endif
 		// standard Vulkan versioning
 		return std::format("{}.{}.{}", (code >> 22), ((code >> 12) & 0x3ff), (code & 0xfff));
+	}
+
+	VkImageFormatProperties getPhysicalDeviceImageFormatProperties(
+		VkFormat format,
+		VkImageType type,
+		VkImageTiling tiling,
+		VkImageUsageFlags usage,
+		VkImageCreateFlags flags) const
+	{
+		VkImageFormatProperties imageformatproperties;
+		THROW_ON_VULKAN_ERROR(vkGetPhysicalDeviceImageFormatProperties(this->physicalDevice, format, type, tiling, usage, flags, &imageformatproperties));
+		return imageformatproperties;
 	}
 
 	uint32_t getMemoryTypeIndex(uint32_t memoryTypeBits, VkMemoryPropertyFlags required_flags) const
