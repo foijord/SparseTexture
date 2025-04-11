@@ -71,6 +71,11 @@ public:
 		return this->physicalDeviceProperties.deviceID;
 	}
 
+	VkDeviceSize getSparseAddressSpaceSize() const
+	{
+		return this->physicalDeviceProperties.limits.sparseAddressSpaceSize;
+	}
+
 	std::string driverVersion() const
 	{
 		auto code = this->physicalDeviceProperties.driverVersion;
