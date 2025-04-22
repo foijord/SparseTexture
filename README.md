@@ -58,10 +58,10 @@ Sparse address space: 255.9765625 TiB
 Image max extent: (16384, 16384, 8192)
 Timing binds........... Wrote results to: "AMD Radeon RX 7900 XT 2.0.302.txt"
 
-NVIDIA RTX A6000, Driver version: 551.86.0.0
-Sparse address space: 0.9999999999990905 TiB
+NVIDIA RTX A6000, Driver version: 572.83.0.0
+Sparse address space: 1 TiB
 Image max extent: (16384, 16384, 16384)
-Timing binds........... Wrote results to: "NVIDIA RTX A6000 551.86.0.0.txt"
+Timing binds........... Wrote results to: "NVIDIA RTX A6000 572.83.0.0.txt"
 ```
 
 Bind times plotted:
