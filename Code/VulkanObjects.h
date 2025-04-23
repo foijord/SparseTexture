@@ -464,5 +464,11 @@ public:
 			std::chrono::steady_clock::now() - this->start_time).count();
 	}
 
+	double getElapsedTimeMilliseconds() const
+	{
+		return std::chrono::duration_cast<std::chrono::duration<double, std::milli>>(
+			std::chrono::steady_clock::now() - this->start_time).count();
+	}
+
 	std::chrono::time_point<std::chrono::steady_clock> start_time;
 };

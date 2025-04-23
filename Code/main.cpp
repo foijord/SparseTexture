@@ -20,7 +20,8 @@ int main(int, const char* [])
 		}
 
 		for (auto& physicalDevice : physicalDevices) {
-			std::cout << std::format("{}, Driver version: {}", physicalDevice->deviceName(), physicalDevice->driverVersion()) << std::endl;
+			auto device_info = std::format("{}, Driver version: {}", physicalDevice->deviceName(), physicalDevice->driverVersion());
+			std::cout << device_info << std::endl;
 
 			auto graphicsQueueFamilyIndex = physicalDevice->getQueueFamilyIndex(VK_QUEUE_GRAPHICS_BIT | VK_QUEUE_SPARSE_BINDING_BIT);
 			auto graphicsQueueIndex = physicalDevice->addQueue(graphicsQueueFamilyIndex);
@@ -128,7 +129,7 @@ int main(int, const char* [])
 								Timer timer;
 								graphicsQueue->bindSparse(sparseImageMemoryBindInfo, fence->fence);
 								fence->waitAndReset();
-								bindTimes.push_back(timer.getElapsedTimeSeconds());
+								bindTimes.push_back(timer.getElapsedTimeMilliseconds());
 							}
 
 							sparseImageMemoryBinds.clear();
@@ -147,6 +148,7 @@ int main(int, const char* [])
 
 			std::ofstream outFile(filename);
 			if (outFile.is_open()) {
+				outFile << device_info << std::endl;
 				for (auto& bindTime : bindTimes) {
 					outFile << bindTime << std::endl;
 				}
