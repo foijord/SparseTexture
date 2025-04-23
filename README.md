@@ -46,7 +46,7 @@ SparseTexture\Build> cmake.exe ..\Code\
 ```
 This generates the VS solution in the Build folder. Open, build and run.
 
-## Output on my test system
+## Example Output on my test system
 ```
 Intel(R) Arc(TM) A770 Graphics, Driver version: 101.6734
 Sparse address space: 16 TiB
@@ -64,8 +64,9 @@ Image max extent: (16384, 16384, 16384)
 Timing binds........... Wrote results to: "NVIDIA RTX A6000 572.83.0.0.txt"
 ```
 
-Bind times plotted:
+## Bind times plotted:
 
-![alt text](nvidia.png)
-![alt text](intel.png)
-![alt text](amd.png)
+![AMD Radeon RX 7900 XT 2.0.331.png](Runs//AMD%20Radeon%20RX%207900%20XT%202.0.331.png)
+![Intel(R) Arc(TM) A770 Graphics 101.6734.png](Runs//Intel(R)%20Arc(TM)%20A770%20Graphics%20101.6734.png)
+![NVIDIA RTX A6000 572.83.0.0.png](Runs//NVIDIA%20RTX%20A6000%20572.83.0.0.png)
+![NVIDIA RTX A6000 576.2.0.0.png](Runs//NVIDIA%20RTX%20A6000%20576.2.0.0.png)
