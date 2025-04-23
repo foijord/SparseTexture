@@ -68,5 +68,6 @@ Timing binds........... Wrote results to: "NVIDIA RTX A6000 572.83.0.0.txt"
 
 ![AMD Radeon RX 7900 XT 2.0.331.png](Runs//AMD%20Radeon%20RX%207900%20XT%202.0.331.png)
 ![Intel(R) Arc(TM) A770 Graphics 101.6734.png](Runs//Intel(R)%20Arc(TM)%20A770%20Graphics%20101.6734.png)
+![NVIDIA RTX 6000 Ada Generation 576.2.0.0.png](Runs//NVIDIA%20RTX%206000%20Ada%20Generation%20576.2.0.0.png)
 ![NVIDIA RTX A6000 572.83.0.0.png](Runs//NVIDIA%20RTX%20A6000%20572.83.0.0.png)
 ![NVIDIA RTX A6000 576.2.0.0.png](Runs//NVIDIA%20RTX%20A6000%20576.2.0.0.png)
