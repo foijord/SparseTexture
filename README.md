@@ -1,3 +1,7 @@
+# UPDATE
+Scroll to the bottom for 2 runs using Windows11 24H2. Both AMD and NVIDIA bind performance has been greatly improved with this version of Win11, but most significantly, the bind times are not increasing with increased coverage.
+
+
 # Vulkan Sparse Texture Binding Performance
 Sparse resources in Vulkan enable virtual texture systems, often called giga-textures, by allowing applications to bind memory pages to large images on demand. This approach is ideal for managing massive textures efficiently, but its effectiveness depends on the speed and concurrency of binding operations. If binding tiles to a sparse image via **vkQueueBindSparse** is slow and blocking, sparse resources become impractical for real-time applications like virtual texturing in games or rendering engines.
 
@@ -66,9 +70,15 @@ Timing binds........... Wrote results to: "NVIDIA RTX A6000 572.83.0.0.txt"
 
 ## Bind times plotted:
 
+## Windows 11, 23H2
+
+
 ![AMD Radeon RX 7900 XT 2.0.331.png](Runs//AMD%20Radeon%20RX%207900%20XT%202.0.331.png)
 ![Intel(R) Arc(TM) A770 Graphics 101.6734.png](Runs//Intel(R)%20Arc(TM)%20A770%20Graphics%20101.6734.png)
 ![NVIDIA RTX 6000 Ada Generation 553.62.0.0 Dynamic Streaming.png](Runs//NVIDIA%20RTX%206000%20Ada%20Generation%20553.62.0.0%20Dynamic%20Streaming.png)
 ![NVIDIA RTX 6000 Ada Generation 553.62.0.0.png](Runs//NVIDIA%20RTX%206000%20Ada%20Generation%20553.62.0.0.png)
-![NVIDIA RTX A6000 572.83.0.0.png](Runs//NVIDIA%20RTX%20A6000%20572.83.0.0.png)
 ![NVIDIA RTX A6000 576.2.0.0.png](Runs//NVIDIA%20RTX%20A6000%20576.2.0.0.png)
+
+## Windows 11, 24H2
+![NVIDIA RTX A6000 572.83.0.0.png](Runs//NVIDIA%20RTX%20A6000%20572.83.0.0.png)
+![AMD Radeon(TM) 8060S Graphics 2.0.317.png](Runs//AMD%20Radeon(TM)%208060S%20Graphics%202.0.317.png)
