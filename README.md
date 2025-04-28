@@ -80,5 +80,6 @@ Timing binds........... Wrote results to: "NVIDIA RTX A6000 572.83.0.0.txt"
 ![NVIDIA RTX A6000 576.2.0.0.png](Runs//NVIDIA%20RTX%20A6000%20576.2.0.0.png)
 
 ## Windows 11, 24H2
+![Win1124H2 Ada6000 576.2.0.0.png](Runs//Win1124H2%20Ada6000%20576.2.0.0.png)
 ![NVIDIA RTX A6000 572.83.0.0.png](Runs//NVIDIA%20RTX%20A6000%20572.83.0.0.png)
 ![AMD Radeon(TM) 8060S Graphics 2.0.317.png](Runs//AMD%20Radeon(TM)%208060S%20Graphics%202.0.317.png)
